@@ -1,2 +1,23 @@
 ---
-# tasks file for ansible-role-php
+- name: Ensure OS is Debian based
+  assert:
+    that: "ansible_os_family == 'Debian'"
+    msg: "This role currently supports Debian based systems."
+
+# Variable setup.
+- name: Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Set base php_packages
+  set_fact:
+    php_packages: "{{ __php_packages | list }}"
+  when: php_packages is not defined
+
+- name: Update php_packages with any php_packages_extra
+  set_fact:
+    php_packages: "{{ php_packages | list + php_packages_extra | list }}"
+  when: php_packages_extra is defined
+
+# Setup PHP.
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
