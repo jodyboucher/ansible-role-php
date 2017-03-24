@@ -14,3 +14,12 @@ __php_packages:
   - php7.0-readline
   - php7.0-xml
   - php7.0-xmlrpc
+
+# Configuration paths on Debian/Ubuntu.
+__php_conf_paths:
+  - /etc/php/7.0/cli
+  - /etc/php/7.0/fpm
+
+__php_extension_conf_paths:
+  - /etc/php/7.0/cli/conf.d
+  - /etc/php/7.0/fpm/conf.d

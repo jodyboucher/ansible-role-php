@@ -18,6 +18,19 @@
     php_packages: "{{ php_packages | list + php_packages_extra | list }}"
   when: php_packages_extra is defined
 
-# Setup PHP.
+- name: Set php_conf_paths
+  set_fact:
+    php_conf_paths: "{{ __php_conf_paths }}"
+  when: php_conf_paths is not defined
+
+- name: Set php_extension_conf_paths
+  set_fact:
+    php_extension_conf_paths: "{{ __php_extension_conf_paths }}"
+  when: php_extension_conf_paths is not defined
+
+# Setup
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
+
+# Configure
+- include: configure.yml
