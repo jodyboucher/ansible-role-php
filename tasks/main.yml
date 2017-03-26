@@ -26,7 +26,7 @@
 - name: Set php_conf_path
   set_fact:
     php_conf_paths: "{{ __php_conf_path }}"
-  when: php_conf_pathsis not defined
+  when: php_conf_path is not defined
 
 # Setup
 - include: setup-Debian.yml
