@@ -1,8 +1,15 @@
 ---
+- name: Ensure configuration directories exist
+  file:
+    path: "{{ php_conf_path }}/{{ item }}"
+    state: directory
+    follow: true
+  with_items: "{{ php_server_apis }}"
+
 - name: Configure PHP base
   template:
     src: php.ini.j2
-    dest: "php_conf_path/{{ item }}/php.ini"
+    dest: "{{ php_conf_path }}/{{ item }}/php.ini"
     owner: root
     group: root
     mode: 0644
