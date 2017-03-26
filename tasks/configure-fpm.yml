@@ -1,0 +1,32 @@
+---
+- name: Set php_fpm_pool_user
+  set_fact:
+    php_packages: "{{ __php_fpm_pool_user }}"
+  when: php_fpm_pool_user is not defined
+
+- name: Set php_fpm_pool_group
+  set_fact:
+    php_packages: "{{ __php_fpm_pool_group }}"
+  when: php_fpm_pool_group is not defined
+
+- name: Configure FPM base
+  template:
+    src: php-fpm.conf.j2
+    dest: "{{ php_conf_path }}/fpm/php-fpm.conf"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Configure FPM pool
+  template:
+    src: fpm-pool.conf.j2
+    dest: "{{ php_fpm_pool_conf_path }}/www.conf"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Ensure FPM is started and enabled at boot
+  service:
+    name: php7.0-fpm.service
+    state: started
+    enabled: yes

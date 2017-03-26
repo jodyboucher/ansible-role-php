@@ -20,3 +20,6 @@ __php_server_apis:
   - fpm
 
 __php_conf_path: /etc/php/7.0
+
+__php_fpm_pool_user: "www-data"
+__php_fpm_pool_group: "www-data"
