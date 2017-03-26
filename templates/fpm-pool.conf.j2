@@ -255,6 +255,7 @@ pm.max_spare_servers = {{ php_fpm_pm_max_spare_servers }}
 
 ; The access log format.
 ; The following syntax is allowed
+{% raw %}
 ;  %%: the '%' character
 ;  %C: %CPU used by the request
 ;      it can accept the following format:
@@ -311,6 +312,7 @@ pm.max_spare_servers = {{ php_fpm_pm_max_spare_servers }}
 ;
 ; Default: "%R - %u %t \"%m %r\" %s"
 ;access.format = "%R - %u %t \"%m %r%Q%q\" %s %f %{mili}d %{kilo}M %C%%"
+{% endraw %}
 
 ; The log file for slow requests
 ; Default Value: not set
