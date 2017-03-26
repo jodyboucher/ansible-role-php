@@ -1,12 +1,12 @@
 ---
 - name: Set php_fpm_pool_user
   set_fact:
-    php_packages: "{{ __php_fpm_pool_user }}"
+    php_fpm_pool_user: "{{ __php_fpm_pool_user }}"
   when: php_fpm_pool_user is not defined
 
 - name: Set php_fpm_pool_group
   set_fact:
-    php_packages: "{{ __php_fpm_pool_group }}"
+    php_fpm_pool_group: "{{ __php_fpm_pool_group }}"
   when: php_fpm_pool_group is not defined
 
 - name: Configure FPM base
