@@ -1,5 +1,8 @@
 ---
 - hosts: all
+  vars:
+    # web server is not installed when testing in isolation, so disable
+    php_enable_webserver: false
   roles:
     # role source directory is mounted in docker container under this name during testing
     - role_under_test
