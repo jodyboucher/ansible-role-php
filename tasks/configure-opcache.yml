@@ -14,6 +14,7 @@
   with_subelements:
     - "{{ php_installed_opcache_confs.results }}"
     - files
+  notify: restart web server
 
 - name: Configure OpCache
   template:
@@ -25,6 +26,7 @@
     mode: 0644
   with_items: "{{ php_server_apis }}"
   when: php_opcache_enable
+  notify: restart web server
 
 - name: Remove config if OpCache is disabled
   file:
@@ -32,3 +34,4 @@
     state: absent
   with_items: "{{ php_server_apis }}"
   when: not php_opcache_enable
+  notify: restart web server

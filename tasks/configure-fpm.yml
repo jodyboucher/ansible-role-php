@@ -16,6 +16,7 @@
     owner: root
     group: root
     mode: 0644
+  notify: restart php-fpm
 
 - name: Configure FPM pool
   template:
@@ -24,6 +25,7 @@
     owner: root
     group: root
     mode: 0644
+  notify: restart php-fpm
 
 - name: Ensure FPM is started and enabled at boot
   service:

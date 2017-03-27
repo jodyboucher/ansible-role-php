@@ -13,4 +13,5 @@
     owner: root
     group: root
     mode: 0644
+  notify: restart web server
   with_items: "{{ php_server_apis }}"
