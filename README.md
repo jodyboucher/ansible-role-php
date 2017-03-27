@@ -1,5 +1,7 @@
 # Ansible role: php
 
+[![Build Status](https://travis-ci.org/jodyboucher/ansible-role-php.svg?branch=master)](https://travis-ci.org/jodyboucher/ansible-role-php)
+
 An [Ansible](https://www.ansible.com/) role that installs and configures php.
 
 This role is designed for Ubuntu 16.04 Xenial.
