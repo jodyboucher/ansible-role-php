@@ -1,2 +1,12 @@
 ---
-# handlers file for ansible-role-php
+- name: restart web server
+  service:
+    name: "{{ php_webserver_daemon }}"
+    state: restarted
+  notify: restart php-fpm
+  when: php_enable_webserver
+
+- name: restart php-fpm
+  service:
+    name: php7.0-fpm.service
+    state: restarted

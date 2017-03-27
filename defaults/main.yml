@@ -1,5 +1,12 @@
 ---
-# PHP.ini Language Options
+# Set to true if you're using PHP with a web server (Apache/Nginx/etc)
+# Otherwise set to false
+php_enable_webserver: true
+# If using PHP with a web server, set to the name of the web server daemon
+php_webserver_daemon: "nginx"
+
+# PHP settings
+# PHP.ini - Language Options
 php_short_open_tag: "Off"
 php_output_buffering: "4096"
 php_disable_functions:
@@ -26,36 +33,36 @@ php_disable_functions:
   - pcntl_setpriority
 php_realpath_cache_size: "16K"
 
-# PHP.ini Miscellaneous
+# PHP.ini - Miscellaneous
 php_expose_php: "Off"
 
-# PHP.ini Resource Limits
+# PHP.ini - Resource Limits
 php_max_execution_time: "30"
 php_max_input_time: "60"
 php_memory_limit: "128M"
 
-# PHP.ini Error handling and logging
+# PHP.ini - Error handling and logging
 php_error_reporting: "E_ALL & ~E_DEPRECATED & ~E_STRICT"
 php_display_errors: "Off"
 php_display_startup_errors: "Off"
 
-# PHP.ini Data Handling
+# PHP.ini - Data Handling
 php_post_max_size: "8M"
 
-# PHP.ini Paths and Directories
+# PHP.ini - Paths and Directories
 php_cgi_fix_pathinfo: "0"
 
-# PHP.ini File Uploads
+# PHP.ini - File Uploads
 php_file_uploads: "On"
 php_upload_max_filesize: "4M"
 php_max_file_uploads: "20"
 
-# PHP.ini Module Settings
+# PHP.ini - Module Settings
 php_date_timezone: "America/New_York"
 php_session_save_handler: "files"
 php_session_save_path: "/var/lib/php/sessions"
 
-# PHP-FPM Settings
+# PHP-FPM settings
 php_fpm_pid: "/run/php/php7.0-fpm.pid"
 php_fpm_error_log: "/var/log/php7.0-fpm.log"
 php_fpm_pool_conf_path: "{{ php_conf_path }}/fpm/pool.d"
