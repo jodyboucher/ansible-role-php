@@ -35,3 +35,4 @@
 # Configure
 - include: configure.yml
 - include: configure-fpm.yml
+- include: configure-opcache.yml

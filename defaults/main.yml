@@ -65,3 +65,19 @@ php_fpm_pm_max_children: 5
 php_fpm_pm_start_servers: 2
 php_fpm_pm_min_spare_servers: 1
 php_fpm_pm_max_spare_servers: 3
+
+# OpCache settings.
+php_opcache_enable: true
+php_opcache_conf_filename: 10-opcache.ini
+php_opcache_zend_extension: "opcache.so"
+php_opcache_enable: "1"
+php_opcache_enable_cli: "0"
+php_opcache_memory_consumption: "64"
+php_opcache_interned_strings_buffer: "4"
+php_opcache_max_accelerated_files: "4096"
+php_opcache_max_wasted_percentage: "5"
+php_opcache_validate_timestamps: "1"
+php_opcache_revalidate_path: "0"
+php_opcache_revalidate_freq: "120"
+php_opcache_max_file_size: "0"
+php_opcache_blacklist_filename: ""

@@ -1,0 +1,34 @@
+---
+- name: Check for existing OpCache configs
+  find:
+    paths: "{{ php_conf_path }}/{{ item }}/conf.d"
+    contains: 'zend_extension(\s+)?=(\s+)?opcache\.so'
+  register: php_installed_opcache_confs
+  with_items: "{{ php_server_apis }}"
+
+- name: Remove any non-role-installed OpCache configs
+  file:
+    path: "{{ item.1.path }}"
+    state: absent
+  when: php_opcache_conf_filename != (item.1.path.split('/') | last)
+  with_subelements:
+    - "{{ php_installed_opcache_confs.results }}"
+    - files
+
+- name: Configure OpCache
+  template:
+    src: opcache.ini.j2
+    dest: "{{ php_conf_path }}/{{ item }}/conf.d/{{ php_opcache_conf_filename }}"
+    owner: root
+    group: root
+    force: yes
+    mode: 0644
+  with_items: "{{ php_server_apis }}"
+  when: php_opcache_enable
+
+- name: Remove config if OpCache is disabled
+  file:
+    path: "{{ php_conf_path }}/{{ item }}/conf.d/{{ php_opcache_conf_filename }}"
+    state: absent
+  with_items: "{{ php_server_apis }}"
+  when: not php_opcache_enable
