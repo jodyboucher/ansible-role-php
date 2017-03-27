@@ -74,7 +74,6 @@ php_fpm_pm_min_spare_servers: 1
 php_fpm_pm_max_spare_servers: 3
 
 # OpCache settings.
-php_opcache_enable: true
 php_opcache_conf_filename: 10-opcache.ini
 php_opcache_zend_extension: "opcache.so"
 php_opcache_enable: "1"
