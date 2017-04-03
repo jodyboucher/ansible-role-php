@@ -7,6 +7,7 @@ php_webserver_daemon: "nginx"
 
 # PHP settings
 # PHP.ini - Language Options
+php_engine: "Off"
 php_short_open_tag: "Off"
 php_output_buffering: "4096"
 php_disable_functions:
