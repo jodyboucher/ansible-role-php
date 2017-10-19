@@ -29,10 +29,10 @@
   when: php_conf_path is not defined
 
 # Setup
-- include: setup-Debian.yml
+- import_tasks: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
 # Configure
-- include: configure.yml
-- include: configure-fpm.yml
-- include: configure-opcache.yml
+- import_tasks: configure.yml
+- import_tasks: configure-fpm.yml
+- import_tasks: configure-opcache.yml
