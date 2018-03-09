@@ -11,7 +11,7 @@ This role is designed for Ubuntu 16.04 Xenial.
 * [Ansible](https://docs.ansible.com/ansible/intro_installation.html) >= 2.4 (makes use of new import_tasks module)
 * This role requires `root` access so be sure to enable privilege escalation:
 
-```
+```yml
 # privilege escalation of play
 - hosts: webservers
   become: true
@@ -28,7 +28,8 @@ This role is designed for Ubuntu 16.04 Xenial.
 ## Role Variables
 
 The available variables of this role are listed here along with default values:
-```
+
+```yml
 # The PHP packages to install
 php_packages:
   - libpcre3-dev
@@ -148,7 +149,6 @@ php_opcache_revalidate_path: "0"
 php_opcache_revalidate_freq: "120"
 php_opcache_max_file_size: "0"
 php_opcache_blacklist_filename: ""
-
 ```
 
 ## Dependencies
@@ -157,7 +157,7 @@ None.
 
 ## Example Playbook
 
-```
+```yml
 ---
 - hosts: webservers
   become: true
@@ -169,20 +169,21 @@ None.
 
 Inside `vars/main.yml`:
 
-```
+```yml
 ---
 ```
 
 ## Installation
 
 On the command-line:
-```
-$ ansible-galaxy install git+https://github.com/jodyboucher/ansible-role-php.git
+
+```bash
+ansible-galaxy install git+https://github.com/jodyboucher/ansible-role-php.git
 ```
 
 or in a role file (requirements.yml):
 
-```
+```yml
 - name: php
   src: https://github.com/jodyboucher/ansible-role-php
   version: master
