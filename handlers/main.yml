@@ -8,5 +8,5 @@
 
 - name: restart php-fpm
   service:
-    name: php7.0-fpm.service
+    name: php{{ php_version }}-fpm.service
     state: restarted
