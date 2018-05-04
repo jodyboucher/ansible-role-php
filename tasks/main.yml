@@ -1,15 +1,20 @@
 ---
-- name: Ensure OS is Debian based
+- name: Ensure OS is Ubuntu
   assert:
-    that: "ansible_os_family == 'Debian'"
-    msg: "This role currently supports Debian based systems."
+    that: "ansible_os_family == 'Ubuntu'"
+    msg: "This role currently supports Ubuntu based systems."
 
 # Variable setup.
 - name: Include OS-specific variables
-  include_vars: "{{ ansible_os_family }}.yml"
-  with_fileglob:
-    - "../vars/{{ ansible_os_family }}.yml"
-    - "../vars/{{ ansible_os_family }}-php{{ php_version }}.yml"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+
+- name: Set PHP version
+  set_fact:
+    php_version: "{{ __php_version }}"
+  when: php_version is not defined
 
 - name: Set base php_packages
   set_fact:

@@ -1,0 +1,7 @@
+---
+__php_server_apis:
+  - cli
+  - fpm
+
+__php_fpm_pool_user: "www-data"
+__php_fpm_pool_group: "www-data"

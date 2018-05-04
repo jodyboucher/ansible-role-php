@@ -1,7 +1,4 @@
 ---
-# The version of PHP to install
-php_version: 7.0
-
 # Set to true if you're using PHP with a web server (Apache/Nginx/etc)
 # Otherwise set to false
 php_enable_webserver: true

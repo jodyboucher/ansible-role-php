@@ -1,0 +1,20 @@
+---
+# The version of PHP to install
+__php_version: 7.2
+
+__php_packages:
+  - libpcre3-dev
+  - php{{ __php_version }}-cli
+  - php{{ __php_version }}-common
+  - php{{ __php_version }}-curl
+  - php{{ __php_version }}-fpm
+  - php{{ __php_version }}-gd
+  - php{{ __php_version }}-json
+  - php{{ __php_version }}-mbstring
+  - php{{ __php_version }}-mysql
+  - php{{ __php_version }}-opcache
+  - php{{ __php_version }}-readline
+  - php{{ __php_version }}-xml
+  - php{{ __php_version }}-xmlrpc
+
+__php_conf_path: /etc/php/{{ __php_version }}

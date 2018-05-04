@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jodyboucher/ansible-role-php.svg?branch=master)](https://travis-ci.org/jodyboucher/ansible-role-php)
 
-An [Ansible](https://www.ansible.com/) role that installs and configures PHP7.x.
+An [Ansible](https://www.ansible.com/) role that installs and configures PHP.  The version of PHP installed is the default in the OS distribution.
 
 This role is designed for and tested on the following OS distributions:
 
@@ -33,9 +33,6 @@ This role is designed for and tested on the following OS distributions:
 The available variables of this role are listed here along with default values:
 
 ```yml
-# The version of PHP to install
-php_version: 7.0
-
 # The PHP packages to install
 php_packages:
   - libpcre3-dev
