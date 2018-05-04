@@ -10,6 +10,7 @@
 
 - name: Include PHP version overrides for OS-specific variables
   include_vars: "{{ ansible_os_family }}-php{{ php_version }}.yml"
+  ignore_errors: yes
 
 - name: Set base php_packages
   set_fact:
