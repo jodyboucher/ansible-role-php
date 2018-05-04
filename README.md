@@ -2,9 +2,12 @@
 
 [![Build Status](https://travis-ci.org/jodyboucher/ansible-role-php.svg?branch=master)](https://travis-ci.org/jodyboucher/ansible-role-php)
 
-An [Ansible](https://www.ansible.com/) role that installs and configures php.
+An [Ansible](https://www.ansible.com/) role that installs and configures PHP7.x.
 
-This role is designed for Ubuntu 16.04 Xenial.
+This role is designed for and tested on the following OS distributions:
+
+* Ubuntu 16.04 Xenial
+* Ubuntu 18.04 Bionic
 
 ## Requirements
 
@@ -30,22 +33,25 @@ This role is designed for Ubuntu 16.04 Xenial.
 The available variables of this role are listed here along with default values:
 
 ```yml
+# The version of PHP to install
+php_version: 7.0
+
 # The PHP packages to install
 php_packages:
   - libpcre3-dev
-  - php7.0-cli
-  - php7.0-common
-  - php7.0-curl
-  - php7.0-fpm
-  - php7.0-gd
-  - php7.0-json
-  - php7.0-mbstring
-  - php7.0-mcrypt
-  - php7.0-mysql
-  - php7.0-opcache
-  - php7.0-readline
-  - php7.0-xml
-  - php7.0-xmlrpc
+  - php{{ php_version }}-cli
+  - php{{ php_version }}-common
+  - php{{ php_version }}-curl
+  - php{{ php_version }}-fpm
+  - php{{ php_version }}-gd
+  - php{{ php_version }}-json
+  - php{{ php_version }}-mbstring
+  - php{{ php_version }}-mcrypt
+  - php{{ php_version }}-mysql
+  - php{{ php_version }}-opcache
+  - php{{ php_version }}-readline
+  - php{{ php_version }}-xml
+  - php{{ php_version }}-xmlrpc
 
 # The server APIs to configure
 php_server_apis:
@@ -53,7 +59,7 @@ php_server_apis:
   - fpm
 
 # The path to the PHP configuration
-php_conf_path: /etc/php/7.0
+php_conf_path: /etc/php/{{ php_version }}
 
 # The user/group used by the PHP-FPM pool
 php_fpm_pool_user: "www-data"
@@ -125,11 +131,11 @@ php_session_save_handler: "files"
 php_session_save_path: "/var/lib/php/sessions"
 
 # PHP-FPM settings
-php_fpm_pid: "/run/php/php7.0-fpm.pid"
-php_fpm_error_log: "/var/log/php7.0-fpm.log"
+php_fpm_pid: "/run/php/php{{ php_version }}-fpm.pid"
+php_fpm_error_log: "/var/log/php{{ php_version }}-fpm.log"
 php_fpm_pool_conf_path: "{{ php_conf_path }}/fpm/pool.d"
 php_fpm_pool_name: "www"
-php_fpm_listen: "/run/php/php7.0-fpm.sock"
+php_fpm_listen: "/run/php/php{{ php_version }}-fpm.sock"
 php_fpm_pm_max_children: 5
 php_fpm_pm_start_servers: 2
 php_fpm_pm_min_spare_servers: 1

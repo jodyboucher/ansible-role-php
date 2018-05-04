@@ -8,6 +8,9 @@
 - name: Include OS-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
+- name: Include PHP version overrides for OS-specific variables
+  include_vars: "{{ ansible_os_family }}-php{{ php_version }}.yml"
+
 - name: Set base php_packages
   set_fact:
     php_packages: "{{ __php_packages | list }}"
