@@ -1,7 +1,7 @@
 ---
 - name: Ensure OS is Ubuntu
   assert:
-    that: "ansible_os_family == 'Ubuntu'"
+    that: "ansible_distribution == 'Ubuntu'"
     msg: "This role currently supports Ubuntu based systems."
 
 # Variable setup.
